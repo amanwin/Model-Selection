@@ -116,3 +116,22 @@ To summarize the concept of hyperparameters:
 * The learning algorithm is given the hyperparameters as an 'input' and returns the model parameters as the output
 * Hyperparameters are not a part of the final model output 
 
+## Model Evaluation and Cross Validation
+We now shift our attention towards model evaluation. The key thing to remember is that a model should never be evaluated on data it has already seen before. With that in mind, you will have either one of two cases - 
+1. The training data is abundant 
+2. The training data is limited.
+
+The first case is straightforward because you can use as many observations as you like to both train and test the model. In the second case, however, you will need to find some ‘hack’ so that the model can be evaluated on unseen data and at the same time doesn’t eat up the data available for training. This hack is called **cross-validation**. 
+
+![title](image/cross-validation.JPG)
+
+## Model Evaluation: Python Demonstration-I
+In the last few segments, you learnt about regularization and hyperparameters. You also learnt about cross-validation. In the next few segments, you will learn how to carry out hyperparameter tuning and cross-validation in python.
+
+For demonstration, you will be using **cross-validation with linear regression** and then you will **tune the hyperparameter** for linear regression model. The hyperparameter for the linear regression model is the number of features that is being used for training.
+
+For this demonstration, you will use the **housing.csv** file that was used in the linear regression module.
+
+You may download the data and the python notebook from below.
+
+[Model Evaluation in Python](dataset/Cross-Validation-LinearRegression.ipynb)
