@@ -93,3 +93,26 @@ Although, in practice, we often cannot have a low bias and low variance model. A
 Having established that we need to find the right balance between model bias and variance, or simplicity and complexity, we need tools which can reduce or increase the complexity. In this segment, we will learn regularization methods which are used to keep an eye on model complexity.
 
 Regularization is the process of deliberately simplifying models to achieve the correct balance between keeping the model simple and yet not too naive. Recall that there are a few objective ways of measuring simplicity - choice of simpler functions, lesser number of model parameters, using lower degree polynomials, etc.
+
+## Model Evaluation
+
+### Regularization and Hyperparameters
+**Regularization** discourages the model from becoming too complex even if the model explains the (training) observations better. In the last session, you were introduced to this term which is used to find the optimal point between extreme complexity and simplicity. In this context, we will now discuss the use of hyperparameters of a model.
+
+**Hyperparameters** are parameters that we pass on to the learning algorithm to control the complexity of the final model. Hyper parameter are choices that the algorithm designer makes to ‘tune’ the behavior of the learning algorithm. The choice of hyperparameters, therefore, has a lot of bearing on the final model produced by the learning algorithm.
+
+![title](image/hyperparameter.JPG)
+
+Hyperparameters are a part of most learning algorithms which are used for training and regularization. In linear regression, as you will now see, the hyperparameter is used to regularize the model so that it does not become more complex than it should be.
+
+![title](image/hyperparameter-loop.JPG)
+
+Validation data is used for tuning the hyperparameters. So algorithms gets the hyperperameters generates the model using the training data and checks the validity of the model on the validation data. The test data is kept completely away holding it out. The algorithm can revisit the validation data any no. of times trying to fine tune the hyperparameters till it is happy with the model that it has produced. Once the final model is produced we just test the model on the test data.
+
+![title](image/hyperparameter1.png)
+
+To summarize the concept of hyperparameters:
+* Hyperparameters are used to 'fine-tune' or regularize the model so as to keep it optimally complex
+* The learning algorithm is given the hyperparameters as an 'input' and returns the model parameters as the output
+* Hyperparameters are not a part of the final model output 
+
