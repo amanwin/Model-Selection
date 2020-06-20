@@ -47,11 +47,11 @@ Every learning algorithm puts a boundary around the kinds of models that it is g
 ## Simplicity, Complexity and Overfitting
 We will now discuss the notion of model simplicity and complexity in detail and use some examples and analogies to understand the pros and cons of simple and complex models.
 
-![title](image/model-selection.JPG)
+![title](image/model-selection.jpg)
 
 Now let's see what kind of learning model to choose, if we choose regression then what kind of regression we are going to use?
 
-![title](image/model-selection1.JPG)
+![title](image/model-selection1.jpg)
 
 From your school or college, you can probably recall those few fellows who seemed to study less but understood much more than others. They seem to never care about memorizing or mechanically practicing what was being taught, yet are able to explain complex problems in physics or mathematics with simplicity and elegance. 
 
@@ -88,3 +88,8 @@ In an ideal case, we want to reduce both the bias and the variance, because the 
 ![title](image/Bias_variance.png)
 
 Although, in practice, we often cannot have a low bias and low variance model. As the model complexity goes up, the bias reduces while the variance increases, hence the trade-off.
+
+### Regularization
+Having established that we need to find the right balance between model bias and variance, or simplicity and complexity, we need tools which can reduce or increase the complexity. In this segment, we will learn regularization methods which are used to keep an eye on model complexity.
+
+Regularization is the process of deliberately simplifying models to achieve the correct balance between keeping the model simple and yet not too naive. Recall that there are a few objective ways of measuring simplicity - choice of simpler functions, lesser number of model parameters, using lower degree polynomials, etc.
