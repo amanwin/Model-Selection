@@ -135,3 +135,90 @@ For this demonstration, you will use the **housing.csv** file that was used in t
 You may download the data and the python notebook from below.
 
 [Model Evaluation in Python](dataset/Cross-Validation-LinearRegression.ipynb)
+
+## Model Evaluation: Python Demonstration-II
+In the last segment, you performed pre-processing on the housing dataset.Apart from using a straight line, you can also fit a polynomial to the training data with just one input variable. Fitting a polynomial to the data is known as polynomial regression. Let's first see how do you perform polynomial regression on the training data.
+
+For linear regression of degree 1, you fit the curve of the form:
+
+![title](image/polynomial1.JPG)
+
+For polynomial regression of degree n, you fit the curve of the form:
+
+![title](image/polynomial.JPG)
+
+In this way, instead of just fitting a straight line to a single input-feature dataset, you can fit a more complex curve to the training data.
+
+How does fitting a more complex curve effect the accuracy on the test set? As you know, this can result in overfitting which can lead to low test accuracy.
+
+Recall that you populated the following matrix with the outputs obtained by the linear regression models of various polynomical degrees.
+
+![title](image/polynomial-degree.JPG)
+
+The above matrix was then used to plot the graphs for test and train data.
+
+![title](image/overfitting.JPG)
+
+In the graphs shown above, the blue points represent the train and test data points respectively - train on left-side and test on the right-side. The predictions for various polynomial degrees are shown in different colours. From the plots above, you can see the curves start to overfit the data as the degree of the polynomial is increased beyond a certain degree. This is confirmed by the value of R-squared for both test and train data:
+
+![title](image/r-sqaure.JPG)
+
+As you can observe, the training score is increasing, while the test score is going down as the degree of the polynomial is increased. This is a clear sign of overfitting.
+
+## Cross-Validation: Motivation
+In this segment, you will learn about cross-validation. You will use this technique to select the **number of features** for a linear regression model.
+As you already know, RFE is one such technique. Let's now see how you can use cross-validation to tune this hyperparameter.
+
+The number of input variables in a linear regression model is a hyperparameter. RFE can be used to select this number. The process of selecting an optimal number is a tough task. Why? If the number of features is very large, say 150, it becomes impossible to do it manually.
+
+In such a case, you have an option to automate it using cross-validation. Let's see how.
+
+To summarise, the problems with manual hyperparameter tuning are:
+
+* Split into train and test sets: Tuning a hyperparameter makes the model 'see' the test data. Also, the results are dependent on the specific train-test split.
+* Split into train, validation, test sets: The validation data would eat into the training set.
+
+However, in cross-validation, you split the data into train and test sets and train multiple models by sampling the train set. Finally, you just use the test set to test the hyperparameter once.
+
+### Cross-Validation: Python Demonstration
+In the last segment, you understood the need for using cross-validation for hyperparameter tuning. Let's now implement it in python.
+pecifically, you will do k-fold cross-validation, wherein you divide the training data into k-folds.
+
+Refer to the below image:
+
+![title](image/k-fold.JPG)
+
+In **K-fold CV**, you divide the training data into K-groups of samples. If K=4 (say), you use K-1 folds to build the model and test the model on Kth fold. 
+
+### Cross-Validation: Hyperparameter Tuning
+Hyperparameter tuning is one of the essential tasks in the model building process. For a model to perform best on the data, you need to tune the hyperparameter(s). For linear regression, the number of features is a hyperparameter which you can optimise.
+
+You use GridsearchCV to tune the hyperparameter(s) in python. The grid is a matrix which is populated on each iteration. Please refer to the image below.
+
+![title](image/gridsearchcv.JPG)
+
+You train the model using a different value of the hyperparameter each time. The estimated score is then populated in the grid.
+
+There are broadly three steps you perform while tuning the hyperparameter(s) in python:
+1. Create a cross-validation scheme: how many splits you want to set etc.
+2. Specify the range of hyperparameters to tune.
+3. Perform grid search on the set range.
+
+The results for grid search can be seen using the following code:
+
+![title](image/dataframe.JPG)
+
+You can use the plot of mean test and train score to choose the optimal number for the hyperparameter.
+
+In the example above, you had to select only 13 features. What happens if you want to deal with a large number of features? In the next lecture, let's see how do you do it using the grid search cv method.
+
+The cross-validation scheme used for this demonstration was K-fold, but this is not the only one which is used. There are multiple other schemes that can be used.
+
+The various types of cross-validation are -
+
+* K-fold cross-validation
+* Leave one out(LOO)
+* Leave P-out(LPO)
+* Stratified K-Fold
+
+For more information on the above methods, please go through the documentation https://scikit-learn.org/stable/modules/cross_validation.html
